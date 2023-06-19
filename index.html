@@ -1,88 +1,45 @@
 <!DOCTYPE html>
-
-<html lang="en" class="pc chrome103 js">
-  
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Loan Calculator html</title>
-
-    <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
-    <link rel="stylesheet" type="text/css"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<html>
+<head>
+    <title>Car Loan EMI Calculator</title>
     <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
+    
+</head>
+<body>
+    <div class="container">
+        <form method="post" action="" onsubmit="calculateEMI(event)">
+            <h1>Car Loan EMI Calculator</h1>
 
-    <div class="col-md-12 paymentCalc">
+            <label for="loan_amount">Loan Amount:</label>
+            <input type="number" id="loan_amount" required> <br><br>
 
-      <div class="col-md-6">
+            <label for="interest_rate">Interest Rate (%):</label>
+            <input type="number" id="interest_rate" step="0.01" required> <br><br>
 
-        <form id="loanCalc" action="" method="get" class="">
-          <div class="col-md-12">
-            <h2 style="margin-bottom:5% ;">Calculate Your Auto Loan Payment</h2>
-          </div>
-            <div class="form-group">
-              <label for="vehiclePrice"><b>Vehicle Price</b></label>
-              <input type="text" oninput="this.value=
-                this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, 'Rs1');"
-                class="form-control" id="vehiclePrice" placeholder="Vehicle Price (Ex: In Rs)">
+            <label for="loan_term">Loan Term: <select id="term_option">
+                <option value="months">Months</option>
+                <option value="years">Years</option>
+              </select></label><br>
+            <input type="number" id="loan_term" required> <br><br>
+                      
+            <!-- <input type="submit" value="Calculate"> <br> -->
+            <div class="center">
+                <input type="submit" name="calculate" value="Calculate">
             </div>
-          
-          <div class="col-md-6"  style="margin-top:5% ;">
-            <div class="form-group">
-              <label for="downPayment"><b>Down Payment</b></label>
-              <input type="text" oninput="this.value=
-                this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, 'Rs1');"
-                class="form-control" id="downPayment" placeholder="Down Payment (Ex: In Rs)">
-            </div>
-          </div>
-          <div class="col-md-6" style="margin-top:5% ;">
-            <div class="form-group">
-              <label for="tradeValue"><b>Trade In Value</b></label>
-              <input type="text" oninput="this.value=
-                this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, 'Rs1');"
-                class="form-control" id="tradeValue" placeholder="Trade In Value (Ex: In Rs)">
-            </div>
-          </div>
-          <div class="col-md-6" style="margin-top:5% ;">
-            <div class="form-group">
-              <label for="intRate"><b>Interest Rate</b></label>
-              <input type="text" oninput="this.value=
-                this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, 'Rs1');"
-                class="form-control" id="intRate" placeholder="Interest Rate (Ex: 5%)">
-            </div>
-          </div>
-          <div class="col-md-6" style="margin-top:5% ;">
-            <div class="form-group">
-              <label for="loanTerm"><b>Loan Term</b></label>
-              <input type="text" oninput="this.value=
-                this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, 'Rs1');"
-                class="form-control" id="loanTerm" placeholder="Loan Term (Ex: 36 Months)">
-            </div>
-          </div>
-          <div class="clearfix"></div>
-          <div class="col-md-12">
-            <a href="#" class="calcBtn" onclick="calculatePayments()"
-              id="calculate" value="Calulate">Calculate</a>
-          </div>
         </form>
-      </div>
-      <div class="col-md-6">
-        <div id="paymentResults">
 
+        <div id="resultContainer" class="result-container" style="display: none;">
+            <h3>Loan Details:</h3>
+            <p id="loanAmount"></p>
+            <p id="interestRate"></p>
+            <p id="loanTerm"></p>
+            <p id="emi"></p>
+            <p id="totalPayment"></p>
+            <p id="totalInterest"></p>
         </div>
-      </div>
     </div>
-
-
-    <script src="../assets/assets1/js/jquery.min.js"></script>
-    <script src="../assets/assets1/js/popper.min.js"></script>
-    <script src="../assets/assets1/js/bootstrap.min.js"></script>
-    <script src="main.js"></script>
-
-  </body>
-
+    
+<script src="car_loan.js"></script>
+   
+</body>
 </html>
